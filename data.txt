@@ -1,0 +1,57 @@
+student
+db.student.insertMany([
+	{
+	"student_name":"Ash",
+	"batch":"B27",
+	"mentor_name":"Anita"
+	} , 
+	{
+	"student_name":"Ben",
+	"batch":"B27",
+	"mentor_name":"Saurav"
+	} , 
+	{
+	"student_name":"Chris",
+	"batch":"B28",
+	"mentor_name":"Anita"
+	} , 
+	{
+	"student_name":"Rebecca",
+	"batch":"B28",
+	"mentor_name":"Saurav"
+	} , 
+	{
+	"student_name":"Monika",
+	"batch":"B28",
+	"mentor_name":""
+	} , 
+	{
+	"student_name":"Zara",
+	"batch":"B29",
+	"mentor_name":""
+	} , 
+	{
+	"student_name":"Anil",
+	"batch":"B29",
+	"mentor_name":""
+	} , 
+]
+)
+
+
+mentor
+
+db.mentor.insertMany([
+	{
+	"mentor_name":"Saurav",
+	"experience":6
+	},
+	{
+	"mentor_name":"Preetha",
+	"experience":6
+	},
+	{
+	"mentor_name":"Anita",
+	"experience":8
+	},
+])
