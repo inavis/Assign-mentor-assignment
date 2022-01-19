@@ -1,13 +1,17 @@
 
 import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
 import { MongoClient } from "mongodb";
 
 const app = express();
-const PORT = 9000;
+dotenv.config()
+const PORT = process.env.PORT;
 
 //middleware
 app.use(express.json())
+app.use(cors());
 
 const MONGO_URL="mongodb://localhost:27017";
 //takes some time to connect so using async and await
@@ -18,6 +22,11 @@ async function createConnection(){
     return client;
 }
 const client = await createConnection();
+
+//homepage
+app.get("/",(request,response)=>{
+    response.send("Welcome to Assigning Mentor API")
+})
 
 //get mentor list
 app.get("/mentor",async (request,response)=>{
