@@ -13,7 +13,8 @@ const PORT = process.env.PORT;
 app.use(express.json())
 app.use(cors());
 
-const MONGO_URL="mongodb://localhost:27017";
+// const MONGO_URL="mongodb://localhost:27017";
+const MONGO_URL = process.env.MONGO_URL;
 //takes some time to connect so using async and await
 async function createConnection(){
     const client = new MongoClient(MONGO_URL);
@@ -58,7 +59,11 @@ app.put("/students-for-mentor",async (request,response)=>{
     //if sudent does not have mentor already can add mentor
     students.map(async (ele)=>{
         let student = await getstudentbyname(ele);
-        if(student[0].mentor_name!==""){
+        console.log(student,"student");
+        if(student.length===0){
+            responsearr.push({message:ele+" - The student doesnot exists"});
+        }
+        else if(student[0].mentor_name!==""){
             responsearr.push({message:ele+" already has mentor"});
         }else{
            await updatementor(ele,mentor_name)
